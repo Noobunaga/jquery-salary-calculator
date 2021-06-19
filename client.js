@@ -8,12 +8,13 @@ function readyNow(){
 
 function newEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryInput){
   console.log(firstNameInput, lastNameInput, idInput, titleInput, salaryInput);
+  $( '#addEmployeeButton').on('click', SubmitInput)
   const newEmployee = {
-    First Name: firstNameInput,
-    Last Name: lastNameInput,
-    Id: idInput,
-    Title: titleInput,
-    Annual Salary: salaryInput,
+    first: firstNameInput,
+    last: lastNameInput,
+    id: idInput,
+    title: titleInput,
+    salary: salaryInput,
   }
   employee.push(newEmployee);
   return true;
@@ -21,12 +22,12 @@ function newEmployee(firstNameInput, lastNameInput, idInput, titleInput, salaryI
 
   //function to let button work
 function addEmployee() {
-    let firstName = $('#firstNameInput');
-    let lastName = $('#lastNameInput');
+    let first = $('#firstNameInput');
+    let last = $('#lastNameInput');
     let id = $('#idInput');
     let title = $('#titleInput');
-    let annualSalary = $('#salaryInput')
-    newEmployee(firstName.val(), lastName.val(), id.val(), title.val(), salary.val());
+    let salary = $('#salaryInput')
+    newEmployee(first.val(), last.val(), id.val(), title.val(), salary.val());
     $('#firstNameInput').val('');
     $('#lastNameInput').val('');
     $('#idInput').val('');
@@ -36,3 +37,13 @@ function addEmployee() {
     displayEmployee();
     
   }
+
+  function displayEmployee() {
+    let el = $('#employeeInvOut');
+    el.empty();
+    for (let employeeInv of employee) {
+      console.log(employeeInv);
+      el.append (`<li>` + employeeInv.first + ' ' + employeeInv.last + ' ' + employeeInv.id + '' + employeeInv.title + '' + employeeInv.salary + '' + `</li>`)
+    }
+  }
+  
