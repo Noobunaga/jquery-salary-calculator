@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- reviewing Chad's review and going through and messing around with 
+    getbootstrap and I understand how it works now. Its pretty much a node and 
+  we are just getting certain things from it to help in styling. I now know
+how to link it and manipulate it. It will take more time to learn all the little
+things I can do with this.  -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +13,83 @@
     <script src="jquery.js"></script>
     <script src="client.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Salary Calculator</h1>
-    <div class="header">
-      <h2>Add Employee</h2>
-    </div>
-    <input placeholder= "First Name" id="firstNameInput" />
-    <input placeholder= "Last Name" id="lastNameInput" />
-    <input placeholder= "ID" id="idInput" />
-    <input placeholder="Title" id="titleInput"/>
-    <input placeholder="Annual Salary" id="salaryInput"/>
-    <button id='addEmployeeButton'>Submit</button>
-    <h2>Employees</h2>
-      <ul id="employeeInvOut"></ul>
+  <header>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Salary Calculator</span>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- This is what was throwing me for a loop last week. I went from using 'div'
+    to seeing 'section', 'span', 'table', and 'td,tr,etc'. After really looking 
+  into it and reading I understand now that it helps us later in js or css to 
+direct what we want to target and makes it easier to write js for certain 
+functions. -->
+    <section class="input-group">
+      <form class="row g-3">
+        <span class="bg-success input-group-text">Add Employee Information</span>
+        <label for="firstName" class="col-md-2">First Name
+          <input id="firstName" type="text" aria-label="First Name" class="form-control" />
+        </label>
+        <label for="lastName" class="col-md-2">Last Name
+          <input id="lastName" type="text" aria-label="Last Name" class="form-control" />
+        </label>
+        <label for="id" class="col-md-2">Employee ID
+          <input id="employeeId" type="text" aria-label="Employee ID" class="form-control" />
+        </label>
+        <label for="title" class="col-md-2">Employee Title
+          <input id="title" type="text" aria-label="Employee Title" class="form-control" />
+        </label>
+        <label for="salary" class="col-md-2">Annual Salary
+          <input id="salary" type="text" aria-label="Annual Salary" class="form-control" />
+        </label>
+        <span class="col-md-2">
+          <button id="addEmployeeBtn" type="button" class="btn btn-primary">Add Employee</button>
+        </span>
+      </form>
+    </section>
+    <section>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Annual Salary</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="employeeList">
+          <tr>
+            <td scope="row">Poua</td>
+            <td>Yang</td>
+            <td>1278</td>
+            <td>Automotive Technician</td>
+            <td>100000</td>
+            <td><button type="button" class="btn btn-warning">Delete</button></td>
+          </tr>
+        </tbody>
+          <tfoot id="totalSalary">
+            <tr>
+              <!-- Each 'td' represents a block in the table or page. So in 
+              when we leave some blank its going to the next block and next block
+            until it sees the text we want to put in. So if we leave it all blank
+          we would not get the 3 row in the table to see the monthly total and
+        bugdet.  -->
+              <td scope="row"></td>
+              <td></td>
+              <td></td>
+              <td>Monthly Total:</td>
+              <td>$20000</td>
+            </tr>
+          </tfoot>
+        </table>
+    </section>
+  </main>
 </body>
 </html>
-
